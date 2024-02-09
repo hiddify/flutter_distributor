@@ -21,7 +21,9 @@ dependencies:
   dio: ^5.3.4
   flutter_app_builder: ^0.3.7
   flutter_app_packager: 
-    path: ../flutter_app_packager/
+    git:
+      url: https://github.com/hiddify/flutter_distributor
+      path: packages/flutter_app_packager
   flutter_app_publisher: ^0.3.6
   logging: ^1.0.2
   path: ^1.8.1

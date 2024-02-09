@@ -188,9 +188,11 @@ packages:
   flutter_app_packager:
     dependency: "direct main"
     description:
-      path: "../flutter_app_packager"
-      relative: true
-    source: path
+      path: "packages/flutter_app_packager"
+      ref: HEAD
+      resolved-ref: c3c7a91a9c9050ea4618e76e7f378a22694af4b3
+      url: "https://github.com/hiddify/flutter_distributor"
+    source: git
     version: "0.3.8"
   flutter_app_publisher:
     dependency: "direct main"
