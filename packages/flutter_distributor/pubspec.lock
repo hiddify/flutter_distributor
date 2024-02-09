@@ -36,23 +36,26 @@ packages:
   app_package_maker:
     dependency: "direct main"
     description:
-      path: "../app_package_maker"
-      relative: true
-    source: path
+      name: app_package_maker
+      sha256: "75af571f2feb1a4304a04fc78527a3aad57c5366df7c531b16857f855872b3d2"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.6"
   app_package_parser:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "../app_package_parser"
-      relative: true
-    source: path
+      name: app_package_parser
+      sha256: d5cd87df89c556012fdfa69097a92153b17bb753f549aac849c294eca6b42f9f
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.4"
   app_package_publisher:
     dependency: "direct main"
     description:
-      path: "../app_package_publisher"
-      relative: true
-    source: path
+      name: app_package_publisher
+      sha256: "41b2e4279494044da07dd054e934b5a4e51e9c7646d1c10e5d7e8b4a0b1cb782"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.6"
   archive:
     dependency: transitive
@@ -177,9 +180,10 @@ packages:
   flutter_app_builder:
     dependency: "direct main"
     description:
-      path: "../flutter_app_builder"
-      relative: true
-    source: path
+      name: flutter_app_builder
+      sha256: "1c45e13ba070395ca669f218aa123bbb8c119508d372d5ee4b91210cb29d9394"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.7"
   flutter_app_packager:
     dependency: "direct main"
@@ -187,13 +191,14 @@ packages:
       path: "../flutter_app_packager"
       relative: true
     source: path
-    version: "0.3.7"
+    version: "0.3.8"
   flutter_app_publisher:
     dependency: "direct main"
     description:
-      path: "../flutter_app_publisher"
-      relative: true
-    source: path
+      name: flutter_app_publisher
+      sha256: af0e0e155e778e4172269bf5bc61021aee0ac43026cdd8ca9aad1c2165e8ca3e
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.6"
   frontend_server_client:
     dependency: transitive
@@ -364,11 +369,12 @@ packages:
     source: hosted
     version: "2.1.0"
   parse_app_package:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "../parse_app_package"
-      relative: true
-    source: path
+      name: parse_app_package
+      sha256: "4d5064840ff547709e80685358fe5a7e1eb3e0b60dac6c3cb886b407b83233a1"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.3.6"
   path:
     dependency: "direct main"
@@ -469,16 +475,18 @@ packages:
   shell_executor:
     dependency: "direct main"
     description:
-      path: "../shell_executor"
-      relative: true
-    source: path
+      name: shell_executor
+      sha256: "49254102f8feba7d5a4d528a412b22e59e7907dd4214036e9b9c6cbf047589e9"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.5"
   shell_uikit:
     dependency: "direct main"
     description:
-      path: "../shell_uikit"
-      relative: true
-    source: path
+      name: shell_uikit
+      sha256: "03703090807091514ace2f9c8dc5d9b2d18c42a248c767220167825fbc3d2747"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.1"
   source_map_stack_trace:
     dependency: transitive

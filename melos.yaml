@@ -47,5 +47,8 @@ scripts:
   build_apk:
     run: melos exec --scope="hello_world" -- flutter_distributor release --name dev --jobs android-apk --skip-clean
 
+  build_appimage:
+    run: melos exec --scope="hello_world" -- flutter_distributor release --name dev --jobs linux-appimage --skip-clean
+
   build_ipa:
     run: melos exec --scope="hello_world" -- flutter_distributor release --name dev --jobs ios-ipa --skip-clean

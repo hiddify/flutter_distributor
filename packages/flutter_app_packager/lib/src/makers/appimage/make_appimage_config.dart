@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:app_package_maker/app_package_maker.dart';
+import 'package:path/path.dart' as path;
 
 class AppImageAction {
   AppImageAction({
@@ -40,24 +41,10 @@ class MakeAppImageConfig extends MakeConfig {
     this.include = const [],
     this.startupNotify = true,
     this.genericName = 'A Flutter Application',
-    this.appRunContent = '',
   });
   factory MakeAppImageConfig.fromJson(Map<String, dynamic> map) {
-    var localAppRunContent = '''
-#!/bin/bash
-
-cd "\$(dirname "\$0")"
-export LD_LIBRARY_PATH=usr/lib
-exec ./$appName
-''';
-    if (map['app_run_file'] != null) {
-      localAppRunContent = File(path.join(
-        'linux/packaging/appimage/',
-        map['app_run_file']!,
-      )).readAsStringSync();
-    }
-    print('Use AppRUn', localAppRunContent);
-    return MakeAppImageConfig(
+    
+    final makeConfig = MakeAppImageConfig(
       displayName: map['display_name'] as String,
       icon: map['icon'] as String,
       include: (map['include'] as List<dynamic>? ?? []).cast<String>(),
@@ -69,8 +56,21 @@ exec ./$appName
           .map((e) => AppImageAction.fromJson(
               (Map.castFrom<dynamic, dynamic, String, dynamic>(e))))
           .toList(),
-      appRunContent: localAppRunContent,
     );
+    makeConfig.appRunContent = '''
+#!/bin/bash
+
+cd "\$(dirname "\$0")"
+export LD_LIBRARY_PATH=usr/lib
+exec ./${makeConfig.appName}
+''';
+    if (map['app_run_file'] != null) {
+      makeConfig.appRunContent = File(path.join(
+        'linux/packaging/appimage/',
+        map['app_run_file']!,
+      )).readAsStringSync();
+    }
+    return makeConfig;
   }
 
   final String icon;
@@ -81,6 +81,7 @@ exec ./$appName
   final String genericName;
   final String displayName;
   final List<String> include;
+  String appRunContent = '';
 
   String get desktopFileContent {
     final fields = {
