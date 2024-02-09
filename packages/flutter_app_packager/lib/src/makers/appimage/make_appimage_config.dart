@@ -40,8 +40,23 @@ class MakeAppImageConfig extends MakeConfig {
     this.include = const [],
     this.startupNotify = true,
     this.genericName = 'A Flutter Application',
+    this.appRunContent = '',
   });
   factory MakeAppImageConfig.fromJson(Map<String, dynamic> map) {
+    var localAppRunContent = '''
+#!/bin/bash
+
+cd "\$(dirname "\$0")"
+export LD_LIBRARY_PATH=usr/lib
+exec ./$appName
+''';
+    if (map['app_run_file'] != null) {
+      localAppRunContent = File(path.join(
+        'linux/packaging/appimage/',
+        map['app_run_file']!,
+      )).readAsStringSync();
+    }
+    print('Use AppRUn', localAppRunContent);
     return MakeAppImageConfig(
       displayName: map['display_name'] as String,
       icon: map['icon'] as String,
@@ -54,6 +69,7 @@ class MakeAppImageConfig extends MakeConfig {
           .map((e) => AppImageAction.fromJson(
               (Map.castFrom<dynamic, dynamic, String, dynamic>(e))))
           .toList(),
+      appRunContent: localAppRunContent,
     );
   }
 
@@ -90,16 +106,6 @@ class MakeAppImageConfig extends MakeConfig {
     }).join('\n\n');
 
     return '[Desktop Entry]\n$fields\n\n$actions';
-  }
-
-  String get appRunContent {
-    return '''
-#!/bin/bash
-
-cd "\$(dirname "\$0")"
-export LD_LIBRARY_PATH=usr/lib
-exec ./$appName
-''';
   }
 }
 
